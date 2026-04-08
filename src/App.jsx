@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import LeftControl from './components/LeftControl';
-import RightControl from './components/RightControl';
+import RightControl from './components/Rightcontrol';
 import Screen from './components/Screen';
 import useFetch from './hooks/useFetch';
 
