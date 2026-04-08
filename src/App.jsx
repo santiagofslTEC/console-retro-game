@@ -14,6 +14,12 @@ function App() {
   const [myPokeSelection, setMyPokeSelection] = useState(null);
   const [pcPokeSelection, setPcPokeSelection] = useState(null);
 
+  const handleBack = () => {
+    console.log('back pressed');
+    setMyPokeSelection(null);
+    setPcPokeSelection(null);
+  };
+
   const handleDirection = (direction) => {
     if (direction === 'up') setSelected((prev) => Math.max(0, prev - 4));
     if (direction === 'down') setSelected((prev) => Math.min(pokemones.length - 1, prev + 4));
@@ -55,7 +61,7 @@ function App() {
         ) : (
           <Screen pokemones={pokemones} selected={selected} />
         )}
-        <RightControl handleSelection={handleSelection} />
+        <RightControl handleSelection={handleSelection} handleBack={handleBack} />
       </div>
     </div>
   );
