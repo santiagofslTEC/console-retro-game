@@ -4,6 +4,7 @@ import RightControl from './components/Rightcontrol';
 import Screen from './components/Screen';
 import useFetch from './hooks/useFetch';
 import GameScreen from './components/GameScreen';
+import PokemonCard from './components/PokemonCard';
 
 function App() {
   const url = 'https://pokeapi.co/api/v2/pokemon?limit=100&offset=0';
@@ -25,7 +26,9 @@ function App() {
     Promise.all(plist).then((values) => {
       const saniData = values.map((e) => {
         return {
+          id: e.id,
           name: e.name,
+          types: e.types,
           moves: e.moves.map((e) => {
             return {
               ...e,
@@ -72,8 +75,11 @@ function App() {
         ) : (
           <Screen pokemones={pokemones} selected={selected} />
         )}
-        <RightControl handleSelection={handleSelection} handleBack={handleBack} />
+        <RightControl handleSelection={handleSelection} handleBack={handleBack} />\
       </div>
+        {!myPokeSelection && !pcPokeSelection && (
+        <PokemonCard pokemon={pokemones[selected]} /> 
+        )}
     </div>
   );
 }

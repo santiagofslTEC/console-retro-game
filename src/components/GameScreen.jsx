@@ -1,6 +1,6 @@
 const GameScreen = ({ myPoke, pcPoke }) => {
     return (
-      <div className="w-[420px] h-60 bg-gray-900 border-8 border-gray-700 rounded-lg flex flex-col items-center justify-around p-2 gap-2">
+      <div className="w[420px] h-60 bg-gray-900 border-8 border-gray-700 rounded-lg flex flex-col items-center justify-around p-2 gap-2">
         
         
         <div className="flex items-center justify-around w-full">
