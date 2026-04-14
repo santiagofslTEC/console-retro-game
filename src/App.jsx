@@ -32,7 +32,7 @@ function App() {
           moves: e.moves.map((e) => {
             return {
               ...e,
-              attack: getRandomInt(1, 400),
+              attack: getRandomInt(5, 60),
             };
           }),
           sprites: e.sprites,
@@ -75,7 +75,7 @@ function App() {
         ) : (
           <Screen pokemones={pokemones} selected={selected} />
         )}
-        <RightControl handleSelection={handleSelection} handleBack={handleBack} />\
+        <RightControl handleSelection={handleSelection} handleBack={handleBack} />
       </div>
         {!myPokeSelection && !pcPokeSelection && (
         <PokemonCard pokemon={pokemones[selected]} /> 

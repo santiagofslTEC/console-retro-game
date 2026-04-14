@@ -4,13 +4,12 @@ const GameScreen = ({ myPoke, pcPoke }) => {
   const [myHP, setMyHP] = useState(100);
   const [pcHP, setPcHP] = useState(100);
 
+  const winner = myHP === 0 ? pcPoke?.name : pcHP === 0 ? myPoke?.name : null;
+
   const handleAttack = (attack) => {
-   
     setPcHP((prev) => Math.max(0, prev - attack));
-    
-   
     const randomMove = pcPoke?.moves?.slice(0, 4)[Math.floor(Math.random() * 4)];
-    setMyHP((prev) => Math.max(0, prev - randomMove?.attack));
+    setMyHP((prev) => Math.max(0, prev - (randomMove?.attack ?? 0)));
   };
 
   return (
@@ -45,19 +44,28 @@ const GameScreen = ({ myPoke, pcPoke }) => {
 
       </div>
 
+      {/* Winner banner */}
+      {winner && (
+        <div className="flex flex-col items-center bg-yellow-400 rounded-lg p-4">
+          <p className="text-gray-900 text-2xl font-black uppercase">{winner} wins!</p>
+        </div>
+      )}
+
       {/* Moves */}
-      <div className="grid grid-cols-2 gap-2">
-        {myPoke?.moves?.slice(0, 4).map((m, index) => (
-          <button
-            key={`${m?.move?.name}-${index}`}
-            onClick={() => handleAttack(m?.attack)}
-            className="bg-gray-800 border border-yellow-400 rounded px-3 py-2 flex justify-between items-center cursor-pointer hover:bg-yellow-400 hover:text-gray-900"
-          >
-            <span className="text-white text-xs capitalize">{m?.move?.name}</span>
-            <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full">{m?.attack}</span>
-          </button>
-        ))}
-      </div>
+      {!winner && (
+        <div className="grid grid-cols-2 gap-2">
+          {myPoke?.moves?.slice(0, 4).map((m, index) => (
+            <button
+              key={`${m?.move?.name}-${index}`}
+              onClick={() => handleAttack(m?.attack)}
+              className="bg-gray-800 border border-yellow-400 rounded px-3 py-2 flex justify-between items-center cursor-pointer hover:bg-yellow-400 hover:text-gray-900"
+            >
+              <span className="text-white text-xs capitalize">{m?.move?.name}</span>
+              <span className="bg-red-500 text-white text-xs px-2 py-1 rounded-full">{m?.attack}</span>
+            </button>
+          ))}
+        </div>
+      )}
 
     </div>
   );
