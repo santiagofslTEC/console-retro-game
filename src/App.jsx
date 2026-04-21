@@ -67,7 +67,7 @@ function App() {
   }, [data]);
 
   return (
-    <div className="h-screen bg-gray-950 flex flex-col items-center justify-center ">
+    <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-start pt-8">
       <div className="flex items-stretch">
         <LeftControl onDirection={handleDirection} />
         {myPokeSelection && pcPokeSelection ? (
