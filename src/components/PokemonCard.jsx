@@ -46,7 +46,7 @@ const PokemonCard = ({ pokemon }) => {
       {/* Moves */}
       <div className='px-6 py-5'>
         <h3 className='mb-3 text-lg font-black text-white'>Moves</h3>
-        <div className='space-y-2'>
+        <div className='space-y-2 max-h-64 overflow-y-auto'>
                 {moves.map((move, index) => (
                   <div
                     key={`${move?.move?.name ?? 'move'}-${index}`}
