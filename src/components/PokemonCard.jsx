@@ -21,16 +21,16 @@ const PokemonCard = ({ pokemon }) => {
         <p className='text-xs font-bold tracking-[0.2em] text-slate-400'>#{String(pokemon?.id).padStart(3, '0')}</p>
         <h2 className='text-2xl font-black uppercase text-white text-center leading-tight'>{pokemon?.name}</h2>
         <div className='flex gap-2'>
-          {pokemon?.types?.map((t) => (
-            <span key={t.type.name} className='bg-sky-400 text-white text-[10px] font-bold px-4 py-0.5 rounded uppercase tracking-widest'>
-              {t.type.name}
-            </span>
-          ))}
+        {pokemon?.types?.map((t) => (
+          <span key={t.type.name} className='text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-widest bg-sky-400'>
+            {t.type.name}
+          </span>
+        ))}
         </div>
       </div>
 
       {/* Sprites */}
-      <div className='flex justify-center gap-6 my-6'>
+      <div className='flex justify-center gap-6 py-6 px-6 bg-slate-900'>
         <img
           src={pokemon?.sprites?.front_default}
           alt={`${pokemon?.name ?? 'pokemon'} front`}
@@ -44,14 +44,14 @@ const PokemonCard = ({ pokemon }) => {
       </div>
 
       {/* Moves */}
-      <div>
-        <h3 className='mb-2 text-lg font-black text-slate-100'>Moves</h3>
-        <div className='space-y-1.5'>
-          {moves.map((move, index) => (
-            <div
-              key={`${move?.move?.name ?? 'move'}-${index}`}
-              className='flex items-center justify-between px-1 py-1'
-            >
+      <div className='px-6 py-5'>
+        <h3 className='mb-3 text-lg font-black text-white'>Moves</h3>
+        <div className='space-y-2'>
+                {moves.map((move, index) => (
+                  <div
+                    key={`${move?.move?.name ?? 'move'}-${index}`}
+                    className='flex items-center justify-between bg-slate-700 rounded-xl px-4 py-2'
+                  >
               <span className='text-sm font-semibold capitalize text-slate-100'>
                 {formatMoveName(move?.move?.name)}
               </span>
