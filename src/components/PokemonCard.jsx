@@ -14,12 +14,12 @@ const PokemonCard = ({ pokemon }) => {
   const moves = pokemon?.moves?.slice(0, 10) ?? []
 
   return (
-    <section className='w-[450px] rounded-2xl bg-slate-800 p-6  mt-6 mb-6'>
+    <section className='w-[450px] rounded-2xl bg-slate-800 mt-10 mb-6 shadow-xl overflow-hidden'>
 
       {/* Header card */}
-      <div className='flex flex-col items-center gap-2 rounded-2xl bg-slate-100 px-6 py-5'>
+      <div className='flex flex-col items-center gap-2 bg-slate-700 px-6 py-5'>
         <p className='text-xs font-bold tracking-[0.2em] text-slate-400'>#{String(pokemon?.id).padStart(3, '0')}</p>
-        <h2 className='text-2xl font-black uppercase text-slate-800 text-center leading-tight'>{pokemon?.name}</h2>
+        <h2 className='text-2xl font-black uppercase text-white text-center leading-tight'>{pokemon?.name}</h2>
         <div className='flex gap-2'>
           {pokemon?.types?.map((t) => (
             <span key={t.type.name} className='bg-sky-400 text-white text-[10px] font-bold px-4 py-0.5 rounded uppercase tracking-widest'>
