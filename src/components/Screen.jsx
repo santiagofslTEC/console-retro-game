@@ -1,6 +1,6 @@
 const Screen = ({ pokemones, selected }) => {
     return (
-      <div className="w-122.5 h-70 bg-gray-900 border-8 border-gray-700 rounded-lg flex flex-wrap overflow-y-auto p-2 gap-2"> {/* flex flex wrap lays cards out in ropw the wraps to next line when its*/ }
+      <div className="w-122.5 h-70 bg-gray-900 border-8 border-gray-700 rounded-lg grid grid-cols-5 overflow-y-auto p-2 gap-2">
         {pokemones.map((pokemon, index) => (
           <div
             key={pokemon.id}

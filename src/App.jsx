@@ -70,21 +70,24 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-950 flex items-center justify-center">
-  <div className="flex items-center gap-26">
-    <div className="flex items-stretch">
-      <LeftControl onDirection={handleDirection} />
-      {myPokeSelection && pcPokeSelection ? (
-        <GameScreen myPoke={myPokeSelection} pcPoke={pcPokeSelection} />
-      ) : (
-        <Screen pokemones={pokemones} selected={selected} />
-      )}
-      <RightControl handleSelection={handleSelection} handleBack={handleBack} />
+      <div className="flex items-center gap-26">
+        <div className="flex items-stretch">
+          <LeftControl onDirection={handleDirection} />
+          {myPokeSelection && pcPokeSelection ? (
+            <GameScreen myPoke={myPokeSelection} pcPoke={pcPokeSelection} />
+          ) : (
+            <Screen pokemones={pokemones} selected={selected} />
+          )}
+          <RightControl
+            handleSelection={handleSelection}
+            handleBack={handleBack}
+          />
+        </div>
+        {!myPokeSelection && !pcPokeSelection && (
+          <PokemonCard pokemon={pokemones[selected]} />
+        )}
+      </div>
     </div>
-    {!myPokeSelection && !pcPokeSelection && (
-      <PokemonCard pokemon={pokemones[selected]} />
-    )}
-  </div>
-</div>
   );
 }
 
