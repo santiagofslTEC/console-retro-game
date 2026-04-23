@@ -1,6 +1,6 @@
 const LeftControl = ({ onDirection }) => {
   return (
-    <div className="w-20 h-60 bg-blue-600 rounded-l-3xl flex flex-col items-center justify-around py-6 border-4 border-blue-800">
+    <div className="w-20 h-70 bg-blue-600 rounded-l-3xl flex flex-col items-center justify-around py-6 border-4 border-blue-800">
       
       <div className="w-10 h-10 bg-blue-900 rounded-full" />
       

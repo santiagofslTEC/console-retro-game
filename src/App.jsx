@@ -1,13 +1,13 @@
-import { useEffect, useState } from 'react';
-import LeftControl from './components/LeftControl';
-import RightControl from './components/Rightcontrol';
-import Screen from './components/Screen';
-import useFetch from './hooks/useFetch';
-import GameScreen from './components/GameScreen';
-import PokemonCard from './components/PokemonCard';
+import { useEffect, useState } from "react";
+import LeftControl from "./components/LeftControl";
+import RightControl from "./components/RightControl";
+import Screen from "./components/Screen";
+import useFetch from "./hooks/useFetch";
+import GameScreen from "./components/GameScreen";
+import PokemonCard from "./components/PokemonCard";
 
 function App() {
-  const url = 'https://pokeapi.co/api/v2/pokemon?limit=100&offset=0';
+  const url = "https://pokeapi.co/api/v2/pokemon?limit=100&offset=0";
   const { data } = useFetch(url);
   const [pokemones, setPokemones] = useState([]);
   const [selected, setSelected] = useState(0);
@@ -17,7 +17,7 @@ function App() {
   function getRandomInt(min, max) {
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(max);
-    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); 
+    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled);
   }
 
   const getListPokemones = () => {
@@ -48,10 +48,12 @@ function App() {
   };
 
   const handleDirection = (direction) => {
-    if (direction === 'up') setSelected((prev) => Math.max(0, prev - 4));
-    if (direction === 'down') setSelected((prev) => Math.min(pokemones.length - 1, prev + 4));
-    if (direction === 'left') setSelected((prev) => Math.max(0, prev - 1));
-    if (direction === 'right') setSelected((prev) => Math.min(pokemones.length - 1, prev + 1));
+    if (direction === "up") setSelected((prev) => Math.max(0, prev - 4));
+    if (direction === "down")
+      setSelected((prev) => Math.min(pokemones.length - 1, prev + 4));
+    if (direction === "left") setSelected((prev) => Math.max(0, prev - 1));
+    if (direction === "right")
+      setSelected((prev) => Math.min(pokemones.length - 1, prev + 1));
   };
 
   const handleSelection = () => {
@@ -67,20 +69,22 @@ function App() {
   }, [data]);
 
   return (
-    <div className="min-h-screen bg-gray-950 flex flex-col items-center justify-start pt-8">
-      <div className="flex items-stretch">
-        <LeftControl onDirection={handleDirection} />
-        {myPokeSelection && pcPokeSelection ? (
-          <GameScreen myPoke={myPokeSelection} pcPoke={pcPokeSelection} />
-        ) : (
-          <Screen pokemones={pokemones} selected={selected} />
-        )}
-        <RightControl handleSelection={handleSelection} handleBack={handleBack} />
-      </div>
-        {!myPokeSelection && !pcPokeSelection && (
-        <PokemonCard pokemon={pokemones[selected]} /> 
-        )}
+    <div className="min-h-screen bg-gray-950 flex items-center justify-center">
+  <div className="flex items-center gap-26">
+    <div className="flex items-stretch">
+      <LeftControl onDirection={handleDirection} />
+      {myPokeSelection && pcPokeSelection ? (
+        <GameScreen myPoke={myPokeSelection} pcPoke={pcPokeSelection} />
+      ) : (
+        <Screen pokemones={pokemones} selected={selected} />
+      )}
+      <RightControl handleSelection={handleSelection} handleBack={handleBack} />
     </div>
+    {!myPokeSelection && !pcPokeSelection && (
+      <PokemonCard pokemon={pokemones[selected]} />
+    )}
+  </div>
+</div>
   );
 }
 

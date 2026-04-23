@@ -13,7 +13,7 @@ const GameScreen = ({ myPoke, pcPoke }) => {
   };
 
   return (
-    <div className="w-[420px] bg-gray-900 border-8 border-gray-700 rounded-lg flex flex-col p-4 gap-4">
+    <div className="w-122.5 h-70 bg-gray-900 border-8 border-gray-700 rounded-lg flex flex-col p-4 gap-4 overflow-y-auto">
 
       {/* Pokemon row */}
       <div className="flex items-center justify-around">

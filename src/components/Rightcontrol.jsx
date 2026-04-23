@@ -1,6 +1,6 @@
 const RightControl = ({ handleSelection, handleBack }) => {
   return (
-    <div className="w-20 h-60 bg-red-600 rounded-r-3xl flex flex-col items-center justify-around py-6 border-4 border-red-800">
+    <div className="w-20 h-70 bg-red-600 rounded-r-3xl flex flex-col items-center justify-around py-6 border-4 border-red-800">
       
       <div className="relative w-14 h-14 pointer-events-none">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-5 h-5 bg-yellow-400 rounded-full flex items-center justify-center text-xs font-bold text-yellow-900">X</div>
