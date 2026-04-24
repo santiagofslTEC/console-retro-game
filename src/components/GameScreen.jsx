@@ -7,11 +7,12 @@ const GameScreen = ({ myPoke, pcPoke }) => {
   const winner = myHP === 0 ? pcPoke?.name : pcHP === 0 ? myPoke?.name : null;
 
   const handleAttack = (attack) => {
-    setPcHP((prev) => Math.max(0, prev - attack));
-    const randomMove = pcPoke?.moves?.slice(0, 4)[
-      Math.floor(Math.random() * 4)
-    ];
-    setMyHP((prev) => Math.max(0, prev - (randomMove?.attack ?? 0)));
+    const newPcHP = Math.max(0, pcHP - attack);
+    setPcHP(newPcHP);
+    if (newPcHP > 0) {
+      const randomMove = pcPoke?.moves?.slice(0, 4)[Math.floor(Math.random() * 4)];
+      setMyHP((prev) => Math.max(0, prev - (randomMove?.attack ?? 0)));
+    }
   };
 
   return (
