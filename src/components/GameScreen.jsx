@@ -77,8 +77,8 @@ const GameScreen = ({ myPoke, pcPoke }) => {
       {/* Winner banner */}
       {winner && (
         <div className="absolute inset-0 flex flex-col items-center justify-center z-20">
-          <div className="bg-yellow-400 rounded-lg p-6">
-          <p className="text-gray-900 text-2xl font-black uppercase">
+        <div className="rounded-lg p-6" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+        <p className="text-yellow-400 text-2xl font-black uppercase">
             {winner} wins!
           </p>
         </div>
